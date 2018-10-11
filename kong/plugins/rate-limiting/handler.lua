@@ -35,6 +35,10 @@ local function get_identifier(conf)
     identifier = ngx.var.remote_addr
   end
 
+  if ngx.var.arg_jwth5 then
+     identifier = ngx.var.arg_jwth5
+  end
+  
   return identifier
 end
 
