@@ -293,6 +293,9 @@ function _M:check_maximum_expiration(maximum_expiration)
   end
 
   local exp = self.claims["exp"]
+  if not exp then
+     exp = self.claims["iat"]
+  end
   if exp == nil or exp - ngx_time() > maximum_expiration then
     return false, {exp = "exceeds maximum allowed expiration"}
   end
